@@ -6,8 +6,8 @@ public class PrefabsManager : MonoBehaviour
     [Header("Enemies")]
     public GameObject Enemy1;
     
-    [Header("Items")] 
-    public GameObject Item1;
+    [Header("Objects")] 
+    public GameObject GameOverCanvas;
     
     public static PrefabsManager instance;
 

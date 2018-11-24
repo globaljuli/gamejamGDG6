@@ -20,6 +20,7 @@ public class PlayerController : PhysicsObject
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         //animator = GetComponent<Animator>();
+        healthPoints = 4;
     }
 
     protected override void ComputeVelocity()
@@ -66,6 +67,15 @@ public class PlayerController : PhysicsObject
         healthPoints -= damage;
         Debug.Log("Enemy attacked with" + damage + " left" + healthPoints);
         PlayHitAnimation();
+        if (healthPoints == 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Game.instance.GameOver();
     }
 
     protected void PlayHitAnimation()
