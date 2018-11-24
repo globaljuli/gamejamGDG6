@@ -16,12 +16,20 @@ public class PlayerController : PhysicsObject
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
 
-    // Use this for initialization
-    void Awake()
+    private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
-        healthPoints = 4;
+        if (Instance == null)
+        {
+            Instance = this;   
+            
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            //animator = GetComponent<Animator>();
+            healthPoints = 4;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     protected override void ComputeVelocity()
@@ -58,7 +66,7 @@ public class PlayerController : PhysicsObject
             }
         }
 
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.1f) : (move.x < 0.1f));
         if (!flipSprite)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
@@ -105,4 +113,8 @@ public class PlayerController : PhysicsObject
         Vector2 bulletPosition = transform.position + new Vector3(xDisplacement, 0, 0);
         bullet.GetComponent<Bullet>().Initialize(bulletPosition, facingRight);
     }
+    
+    public static PlayerController Instance;
+    
+    
 }
