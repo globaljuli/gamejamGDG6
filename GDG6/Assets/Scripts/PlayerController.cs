@@ -63,7 +63,8 @@ public class PlayerController : PhysicsObject
 
     public void Hit(int damage)
     {
-        this.healthPoints -= damage;
+        healthPoints -= damage;
+        Debug.Log("Enemy attacked with" + damage + " left" + healthPoints);
         PlayHitAnimation();
     }
 
