@@ -45,7 +45,15 @@ public class PlayerController : PhysicsObject
             PlayerAnimator.SetBool("run", false);
         }
 
-        facingRight = (move.x > 0);
+        if (move.x > 0.1f)
+        {
+            facingRight = true;
+        }
+        else if(move.x < -0.1f)
+        {
+            facingRight = false;
+        }
+        
         
         if (Input.GetButtonDown("Fire1"))
         {
@@ -65,12 +73,7 @@ public class PlayerController : PhysicsObject
             }
         }
 
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.1f) : (move.x < 0.1f));
-        if (!flipSprite)
-        {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-        }
-
+        spriteRenderer.flipX = facingRight;
         //animator.SetBool("grounded", grounded);
         //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
