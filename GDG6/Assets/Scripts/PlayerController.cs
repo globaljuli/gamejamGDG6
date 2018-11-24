@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class PlayerController : PhysicsObject
 
     public float maxSpeed;
     public float jumpTakeOffSpeed;
+    public int healthPoints; 
 
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
@@ -46,5 +48,19 @@ public class PlayerController : PhysicsObject
         //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
+    }
+
+
+    /*ATTACKS*/
+
+    public void Hit(int damage)
+    {
+        this.healthPoints -= damage;
+        PlayHitAnimation();
+    }
+
+    protected void PlayHitAnimation()
+    {
+
     }
 }
