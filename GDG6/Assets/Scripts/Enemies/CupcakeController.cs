@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CupcakeController : MonoBehaviour
+public class CupcakeController : Enemy
 {
 
     public int healthPoints = 1;
     public int attackPoints = 1;
     public float moveSpeed = 5;
     private float step;
-    public Transform Player;
+    private Transform Player;
     public Animator CupcakeAnimator;
     public LayerMask groundMask;
     public Transform groundCheck;
@@ -23,6 +23,7 @@ public class CupcakeController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Player = PlayerController.Instance.transform;
     }
 
     // Update is called once per frame
@@ -58,10 +59,11 @@ public class CupcakeController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerController>().Hit(attackPoints);
+            Hit(attackPoints);
         }
     }
 
-    public void Hit(int damage)
+    public override void Hit(int damage)
     {
         healthPoints -= damage;
 
@@ -87,7 +89,5 @@ public class CupcakeController : MonoBehaviour
         Destroy(gameObject, 0.3f);
 
     }
-
-
 
 }

@@ -51,13 +51,17 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Collision");
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
         StartCoroutine(DestroyBullet());
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //HIT ENEMY
+            other.gameObject.GetComponent<Enemy>().Hit(attackPoints);
         }
     }
+
 
     private IEnumerator DestroyBullet()
     {
