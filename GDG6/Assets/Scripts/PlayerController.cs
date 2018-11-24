@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : PhysicsObject
 {
 
+    public GameObject bullet; 
     public float maxSpeed;
     public float jumpTakeOffSpeed;
 
@@ -14,6 +15,11 @@ public class PlayerController : PhysicsObject
     // Use this for initialization
     void Awake()
     {
+        Instantiate(bullet);
+        if (Input.GetKey(KeyCode.Z))
+        {
+
+        }
         spriteRenderer = GetComponent<SpriteRenderer>();
         //animator = GetComponent<Animator>();
     }
