@@ -1,7 +1,7 @@
 ﻿public class MyCodingStandards
 {
-    public int Public;
-    private int _private;
+    public int publicVar;
+    private int privateVar;
     private const int CONSTANT_THING = 1;
 
     private void Function()
