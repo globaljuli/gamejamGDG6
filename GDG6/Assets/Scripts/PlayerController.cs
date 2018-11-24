@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : PhysicsObject
 {
 
-    public GameObject bullet; 
+    public GameObject Bullet;
+    public Transform show;
     public float maxSpeed;
     public float jumpTakeOffSpeed;
 
@@ -15,17 +16,18 @@ public class PlayerController : PhysicsObject
     // Use this for initialization
     void Awake()
     {
-        Instantiate(bullet);
-        if (Input.GetKey(KeyCode.Z))
-        {
-
-        }
         spriteRenderer = GetComponent<SpriteRenderer>();
         //animator = GetComponent<Animator>();
     }
 
     protected override void ComputeVelocity()
     {
+       
+        if (Input.GetButtonDown("Fire1"))
+        {
+                Instantiate(Bullet, show.position + new Vector3(0.8f,0,0), show.rotation);
+        }
+
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
