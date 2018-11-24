@@ -113,6 +113,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &158659672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 158659673}
+  m_Layer: 0
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &158659673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 158659672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -9.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1019956478}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204298306
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 204298308}
   - component: {fileID: 204298307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,11 +304,11 @@ GameObject:
   - component: {fileID: 1019956478}
   - component: {fileID: 1019956477}
   - component: {fileID: 1019956476}
-  - component: {fileID: 1019956474}
   - component: {fileID: 1019956479}
   - component: {fileID: 1019956475}
+  - component: {fileID: 1019956474}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Cupcake
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,8 +327,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 1
   attackPoints: 1
-  moveSpeed: 7
+  moveSpeed: 2
   Player: {fileID: 1248362321}
+  CupcakeAnimator: {fileID: 1019956479}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  groundCheck: {fileID: 158659673}
+  rbCupcake: {fileID: 1019956476}
+  jumpForce: 10
 --- !u!58 &1019956475
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -335,7 +370,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1019956477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -388,12 +423,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019956473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.96, y: -2.33, z: -2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.85, y: -2.3, z: -2}
   m_LocalScale: {x: 0.22903797, y: 0.22903797, z: 0.22903797}
-  m_Children: []
+  m_Children:
+  - {fileID: 158659673}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1019956479
 Animator:
@@ -413,34 +449,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &1140338303
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1140338304}
-  m_Layer: 0
-  m_Name: CupcakeFather
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1140338304
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1140338303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2833917, y: -0.70231825, z: -2.1894531}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1248362318
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +597,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1527240024}
   - component: {fileID: 1527240025}
-  m_Layer: 0
+  - component: {fileID: 1527240026}
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,6 +643,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22.927414, y: 1.7424297}
   m_EdgeRadius: 0
+--- !u!50 &1527240026
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527240023}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1615180312
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,5 +762,5 @@ Transform:
   m_LocalScale: {x: 510.56717, y: 63.04176, z: 1.5161}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
