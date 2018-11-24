@@ -5,24 +5,33 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 0.4f;
-    private int counter = 0;
     private int attackPoints = 1;
     private bool exploding = false;
+    private int counter;
 
+    
+    public void Initialize(Vector3 initialPosition, bool facingRight)
+    {
+        if (!facingRight)
+        {
+            FlipX();
+        }
+
+        transform.position = initialPosition;
+    }
+    
     private void Update()
     {
         counter++;
-        if (counter > 200)
-        {
-            transform.position = new Vector3(-6, 0);
-            counter = 0;
-            exploding = false;
-        }
-        
         if (!exploding)
         {
             MoveX(speed);
+            if (counter > 100 )
+            {
+                Destroy(gameObject);
+            }
         }
+        
     }
 
     private void MoveX(float displacement)
@@ -52,11 +61,12 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator DestroyBullet()
     {
-        //Destroy(GetComponent<BoxCollider2D>());
+        Destroy(GetComponent<BoxCollider2D>());
         exploding = true;
         //GetComponent<Animator>().SetTrigger("Explode");
         float animationDuration = 1f;
         yield return new WaitForSeconds(animationDuration);
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
+
 }

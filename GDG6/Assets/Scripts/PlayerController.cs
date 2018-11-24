@@ -6,9 +6,9 @@ public class PlayerController : PhysicsObject
 {
 
     public GameObject Bullet;
-    public Transform show;
     public float maxSpeed;
     public float jumpTakeOffSpeed;
+    private bool facingRight;
 
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
@@ -22,15 +22,16 @@ public class PlayerController : PhysicsObject
 
     protected override void ComputeVelocity()
     {
-       
-        if (Input.GetButtonDown("Fire1"))
-        {
-                Instantiate(Bullet, show.position + new Vector3(0.8f,0,0), show.rotation);
-        }
-
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
+
+        facingRight = (move.x > 0);
+        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ShootBullet();
+        }
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -54,5 +55,18 @@ public class PlayerController : PhysicsObject
         //animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
+    }
+
+    private void ShootBullet()
+    {
+        GameObject bullet = Instantiate(Bullet);
+        float xDisplacement = 0.8f;
+        if (!facingRight)
+        {
+            xDisplacement *= -1f;
+        }
+
+        Vector2 bulletPosition = transform.position + new Vector3(xDisplacement, 0, 0);
+        bullet.GetComponent<Bullet>().Initialize(bulletPosition, facingRight);
     }
 }
