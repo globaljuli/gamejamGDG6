@@ -30,6 +30,7 @@ public class PlayerController : PhysicsObject
 
         move.x = Input.GetAxis("Horizontal");
         Debug.Log(move.x);
+
         if (move.x != 0) {
             PlayerAnimator.SetBool("run", true);
         } else
