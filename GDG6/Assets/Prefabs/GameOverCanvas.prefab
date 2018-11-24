@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114509856226413366}
   - component: {fileID: 225776918145413166}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GameOverCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a308633a874e83be12d4cddfa635cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 225776918145413166}
 --- !u!114 &114834627087210584
 MonoBehaviour:
   m_ObjectHideFlags: 1
