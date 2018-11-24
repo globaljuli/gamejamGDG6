@@ -29,6 +29,13 @@ public class PlayerController : PhysicsObject
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
+        Debug.Log(move.x);
+        if (move.x != 0) {
+            PlayerAnimator.SetBool("run", true);
+        } else
+        {
+            PlayerAnimator.SetBool("run", false);
+        }
 
         facingRight = (move.x > 0);
         
@@ -51,7 +58,7 @@ public class PlayerController : PhysicsObject
         }
 
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
+        if (!flipSprite)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
