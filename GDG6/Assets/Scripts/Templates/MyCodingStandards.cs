@@ -6,6 +6,6 @@
 
     private void Function()
     {
-        int localVar;
+        //int localVar;
     }
 }
