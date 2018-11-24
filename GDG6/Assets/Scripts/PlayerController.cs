@@ -9,6 +9,7 @@ public class PlayerController : PhysicsObject
     public GameObject Bullet;
     public float maxSpeed;
     public float jumpTakeOffSpeed;
+    public Animator PlayerAnimator;
     private bool facingRight;
     public int healthPoints; 
 
@@ -39,6 +40,7 @@ public class PlayerController : PhysicsObject
         if (Input.GetButtonDown("Jump") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
+            PlayerAnimator.SetTrigger("jump");
         }
         else if (Input.GetButtonUp("Jump"))
         {
