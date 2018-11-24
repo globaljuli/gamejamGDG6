@@ -55,4 +55,31 @@ public class PlayerController : PhysicsObject
 
         targetVelocity = move * maxSpeed;
     }
+
+    /*ATTACKS*/
+
+    public void Hit(int damage)
+    {
+        healthPoints -= damage;
+        Debug.Log("Enemy attacked with" + damage + " left" + healthPoints);
+        PlayHitAnimation();
+    }
+
+    protected void PlayHitAnimation()
+    {
+
+    }
+
+    private void ShootBullet()
+    {
+        GameObject bullet = Instantiate(Bullet);
+        float xDisplacement = 0.8f;
+        if (!facingRight)
+        {
+            xDisplacement *= -1f;
+        }
+
+        Vector2 bulletPosition = transform.position + new Vector3(xDisplacement, 0, 0);
+        bullet.GetComponent<Bullet>().Initialize(bulletPosition, facingRight);
+    }
 }

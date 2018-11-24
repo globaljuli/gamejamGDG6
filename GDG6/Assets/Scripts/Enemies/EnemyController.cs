@@ -2,11 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour {
 
     public int healthPoints;
     public int attackPoints;
     public float moveSpeed;
+    public GameObject Player;
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -16,14 +29,20 @@ public abstract class EnemyController : MonoBehaviour {
         }
     }
 
-    protected void Hit(int damage)
+    public void Hit(int damage)
     {
-        this.healthPoints -= damage;
+        healthPoints -= damage;
         PlayHitAnimation();
     }
 
     //TODO: Reproduce Hit animation
-    internal abstract void PlayHitAnimation();
+    public void PlayHitAnimation()
+    {
 
-    protected abstract void Die();
+    }
+
+    public void Die()
+    {
+
+    }
 }
