@@ -26,14 +26,14 @@ public class PhysicsObject : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         contactFilter.useLayerMask = true;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
@@ -62,6 +62,16 @@ public class PhysicsObject : MonoBehaviour
         move = Vector2.up * deltaPosition.y;
 
         Movement(move, true);
+
+        Vector2 pos = transform.position;
+        if (pos.x > 8.5f)
+        {
+            pos = new Vector2(8.5f, pos.y);
+        }
+        else if (pos.x < -8.5f)
+        {
+            pos = new Vector2(8.5f, pos.y);
+        }
     }
 
     void Movement(Vector2 move, bool yMovement)

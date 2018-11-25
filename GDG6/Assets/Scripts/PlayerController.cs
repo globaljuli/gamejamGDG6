@@ -11,8 +11,9 @@ public class PlayerController : PhysicsObject
     public float jumpTakeOffSpeed;
     public Animator PlayerAnimator;
     private bool facingRight;
-    public int healthPoints; 
-
+    public int healthPoints;
+    private SfxManager sfx;
+    
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
 
@@ -21,7 +22,6 @@ public class PlayerController : PhysicsObject
         if (Instance == null)
         {
             Instance = this;   
-            
             spriteRenderer = GetComponent<SpriteRenderer>();
             //animator = GetComponent<Animator>();
             healthPoints = 4;
@@ -32,12 +32,17 @@ public class PlayerController : PhysicsObject
         }
     }
 
+    protected override void Start()
+    {
+        sfx = SfxManager.Instance;
+        base.Start();
+    }
+
     protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
-        Debug.Log(move.x);
         if (move.x != 0) {
             PlayerAnimator.SetBool("run", true);
         } else
@@ -85,7 +90,7 @@ public class PlayerController : PhysicsObject
     public void Hit(int damage)
     {
         healthPoints -= damage;
-        Debug.Log("Enemy attacked with" + damage + " left" + healthPoints);
+//        Debug.Log("Enemy attacked with" + damage + " left " + healthPoints);
         PlayHitAnimation();
         if (healthPoints == 0)
         {
@@ -105,6 +110,7 @@ public class PlayerController : PhysicsObject
 
     private void ShootBullet()
     {
+        sfx.Play(sfx.shoot);
         GameObject bullet = Instantiate(Bullet);
         float xDisplacement = 0.8f;
         if (!facingRight)

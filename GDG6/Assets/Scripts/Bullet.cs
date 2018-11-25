@@ -67,8 +67,8 @@ public class Bullet : MonoBehaviour
     {
         Destroy(GetComponent<BoxCollider2D>());
         exploding = true;
-        //GetComponent<Animator>().SetTrigger("Explode");
-        float animationDuration = 1f;
+        GetComponent<Animator>().SetTrigger("Explode");
+        float animationDuration = 0.3f;
         yield return new WaitForSeconds(animationDuration);
         Destroy(gameObject);
     }

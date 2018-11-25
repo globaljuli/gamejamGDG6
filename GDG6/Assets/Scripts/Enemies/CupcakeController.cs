@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CupcakeController : Enemy
 {
 
-    public int healthPoints = 1;
+    public int healthPoints = 2;
     public int attackPoints = 1;
     public float moveSpeed = 5;
     private float step;
@@ -35,12 +36,16 @@ public class CupcakeController : Enemy
         //transform.position = Vector3.MoveTowards(transform.position, playerPos, step);
 
         Vector3 direction = Vector3.right;
-        if (transform.position.x > Player.position.x)
-        {
-            direction = -direction;
-        }
-        MoveAtSpeed(direction * moveSpeed);
 
+        if (Math.Abs(transform.position.x - Player.position.x) > 0.15f)
+        {
+            GetComponent<SpriteRenderer>().flipX = (transform.position.x > Player.position.x);
+            if (transform.position.x > Player.position.x)
+            {
+                direction = -direction;
+            }
+            MoveAtSpeed(direction * moveSpeed);
+        }
 
         if (Physics2D.Linecast(transform.position, groundCheck.position, groundMask) && !dying)
         {
@@ -87,6 +92,7 @@ public class CupcakeController : Enemy
         GetComponent<CircleCollider2D>().enabled = false;
         CupcakeAnimator.SetTrigger("die");
         Destroy(gameObject, 0.3f);
+        rbCupcake.velocity = new Vector2(0, 0);
 
     }
 

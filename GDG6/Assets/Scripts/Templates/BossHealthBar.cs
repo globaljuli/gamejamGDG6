@@ -1,28 +1,44 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class HealthBar : MonoBehaviour
+public class BossHealthBar : MonoBehaviour
 {
     [SerializeField] private Transform _whiteBar;
     [SerializeField] private Transform _redBar;
     
+    bool loweringBar = false;
     private float _maxHP;
     private float _currentHP;
     private Coroutine _activeCoroutine;
 
+    public static BossHealthBar instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    
     public void Init(float maxHealth)
     {
         _maxHP = maxHealth;
         _currentHP = maxHealth;
     }
-
-    public void DealDamage(float damage)
-    {
-        UpdateHealth(_currentHP-damage);
-    }
     
     public void UpdateHealth(float currentHealth)
     {
+        if (currentHealth <= 0)
+        {
+            _whiteBar.localScale = new Vector2(0, 1f);
+            _redBar.localScale = new Vector2(0, 1f);
+            return;
+        }
         if (_activeCoroutine != null)
         {
             StopCoroutine(_activeCoroutine);
@@ -36,8 +52,11 @@ public class HealthBar : MonoBehaviour
     {
         Vector2 startScale = new Vector2(startingHealth / _maxHP, 1f);
         Vector2 finalScale = new Vector2(currentHealth / _maxHP, 1f);
-        yield return new WaitForSeconds(0.5f);
-        
+        if (!loweringBar)
+        {
+            yield return new WaitForSeconds(0.4f);
+        }
+        loweringBar = true;
         float t = 0;
         while (t < 1f)
         {
@@ -45,7 +64,7 @@ public class HealthBar : MonoBehaviour
             _redBar.localScale = Vector2.Lerp(startScale, finalScale, t);
             yield return null;
         }
-
+        loweringBar = false;
         _redBar.localScale = finalScale;
     }
 }

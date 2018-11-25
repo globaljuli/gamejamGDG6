@@ -4,14 +4,16 @@
 public class PrefabsManager : MonoBehaviour
 {
     [Header("Enemies")]
-    public GameObject Enemy1;
+    public GameObject Cupcake;
+    public GameObject MasksBoss;
     
     [Header("Objects")] 
     public GameObject GameOverCanvas;
+    public GameObject FadeOutCanvas;
     
     public static PrefabsManager instance;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {

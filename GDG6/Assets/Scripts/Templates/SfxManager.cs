@@ -4,21 +4,32 @@ public class SfxManager : MonoBehaviour
 {
     public static SfxManager Instance;
 
+    AudioSource source;
+    
     [Header("Player")] 
-    public AudioClip Audio1;
+    public AudioClip shoot;
+    public AudioClip playerHit;
 
     [Header("Enemies")] 
-    public AudioClip Audio2;
+    public AudioClip enemyHit;
+    public AudioClip evilLaugh;
+
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            source = GetComponent<AudioSource>();
         }
         else
         {
             Destroy(this);
         }
+    }
+
+    public void Play(AudioClip clip)
+    {
+        source.PlayOneShot(clip);
     }
 }
