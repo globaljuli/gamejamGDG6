@@ -50,7 +50,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collision");
         if (other.gameObject.CompareTag("Player"))
         {
             return;
@@ -59,6 +58,10 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Enemy>().Hit(attackPoints);
+        }
+        if (other.gameObject.CompareTag("Mirror"))
+        {
+            other.gameObject.GetComponent<MirrorController>().Rebound(transform.position);
         }
     }
 

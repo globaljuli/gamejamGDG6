@@ -77,7 +77,7 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
-        Debug.Log(velocity.y);
+
         if (velocity.y < -3)
         {
           
