@@ -37,7 +37,6 @@ public class PlayerController : PhysicsObject
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
-        Debug.Log(move.x);
 
         if (move.x != 0) {
             PlayerAnimator.SetBool("run", true);
@@ -72,6 +71,12 @@ public class PlayerController : PhysicsObject
             {
                 velocity.y = velocity.y * 0.5f;
             }
+        }
+        Debug.Log(velocity.y);
+        if (velocity.y < -3)
+        {
+          
+            PlayerAnimator.SetTrigger("jumpDown");
         }
 
         spriteRenderer.flipX = facingRight;
