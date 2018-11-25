@@ -14,6 +14,9 @@ public class SfxManager : MonoBehaviour
     public AudioClip enemyHit;
     public AudioClip evilLaugh;
 
+    [Header("Background")]
+    public AudioClip backgroundMusic;
+
 
     void Awake()
     {
