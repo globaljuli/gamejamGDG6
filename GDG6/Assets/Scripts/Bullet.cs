@@ -58,6 +58,10 @@ public class Bullet : MonoBehaviour
         {
             other.gameObject.GetComponent<Enemy>().Hit(attackPoints);
         }
+        if (other.gameObject.CompareTag("Mirror"))
+        {
+            other.gameObject.GetComponent<MirrorController>().Rebound(transform.position);
+        }
     }
 
 
