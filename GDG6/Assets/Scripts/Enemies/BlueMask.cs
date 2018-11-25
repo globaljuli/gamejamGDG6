@@ -9,7 +9,7 @@ namespace DefaultNamespace.Enemies
 
         private void Awake()
         {
-            StartCoroutine(WaitSeconds(5f));
+            StartCoroutine(WaitSeconds(2f));
         }
 
         protected override void ThrowDice()
@@ -21,6 +21,7 @@ namespace DefaultNamespace.Enemies
             }
             else
             {
+                
                 if (dice == 9)
                 {
                     SfxManager.Instance.Play(SfxManager.Instance.evilLaugh);

@@ -9,6 +9,7 @@ public class PrefabsManager : MonoBehaviour
     
     [Header("Objects")] 
     public GameObject GameOverCanvas;
+    public GameObject WhiteFadeOutCanvas;
     public GameObject FadeOutCanvas;
     
     public static PrefabsManager instance;

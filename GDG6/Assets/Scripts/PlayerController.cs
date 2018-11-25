@@ -94,8 +94,19 @@ public class PlayerController : PhysicsObject
 
     /*ATTACKS*/
 
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Mirror"))
+        {
+            Instantiate(PrefabsManager.instance.WhiteFadeOutCanvas);
+            Destroy(this);
+        }
+    }
+    
     public void Hit(int damage)
     {
+        PlayerHealthBar.instance.RemovePetalo();
         healthPoints -= damage;
 //        Debug.Log("Enemy attacked with" + damage + " left " + healthPoints);
         PlayHitAnimation();

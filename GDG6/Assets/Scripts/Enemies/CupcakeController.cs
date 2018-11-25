@@ -19,8 +19,6 @@ public class CupcakeController : Enemy
     private bool dying = false;
     private Animation dieAnimation;
 
-
-
     // Use this for initialization
     void Start()
     {

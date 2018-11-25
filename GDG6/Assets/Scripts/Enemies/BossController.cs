@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class BossController : Enemy {
@@ -14,7 +15,7 @@ public class BossController : Enemy {
     public float waveTimer = 0;
     public Vector3 initialPosition = new Vector3(7.75f, -1.24f, -3f);
 
-    public int healthPoints = 50;
+    private int healthPoints = 20;
     public int attackPoints = 1;
     public float moveSpeed = 1;
 
@@ -39,7 +40,6 @@ public class BossController : Enemy {
         float step = moveSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, initialPosition, step);
 
-        Debug.Log(healthPoints);
         waveTimer += Time.deltaTime;
         if(waveTimer >= 1 && !firstWave)
         {
@@ -193,5 +193,18 @@ public class BossController : Enemy {
     {
         healthPoints -= damage;
         BossHealthBar.instance.UpdateHealth(healthPoints);
+        if (healthPoints < 1)
+        {
+            StartCoroutine(FadeAndLoadScene(3));
+        }
+    }
+    
+                
+    private IEnumerator FadeAndLoadScene(int sceneIndex)
+    {
+        yield return new WaitForSeconds(3f);
+        Instantiate(PrefabsManager.instance.FadeOutCanvas);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(sceneIndex);
     }
 }

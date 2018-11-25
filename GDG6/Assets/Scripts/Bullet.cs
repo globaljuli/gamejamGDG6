@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public float speed = 0.4f;
     private int attackPoints = 1;
     private bool exploding = false;
-    private int counter;
+    private float counter;
 
     
     public void Initialize(Vector3 initialPosition, bool facingRight)
@@ -22,11 +22,11 @@ public class Bullet : MonoBehaviour
     
     private void Update()
     {
-        counter++;
+        counter += Time.deltaTime;
         if (!exploding)
         {
             MoveX(speed);
-            if (counter > 100 )
+            if (counter > 2f )
             {
                 Destroy(gameObject);
             }

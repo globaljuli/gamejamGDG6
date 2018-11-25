@@ -6,7 +6,7 @@ namespace DefaultNamespace.Enemies
 {
     public abstract class Mask : Enemy
     {
-        private static int healthPoints = 10;
+        private static int healthPoints = 20;
         private int attackPoints = 1;
         protected bool dead = false;
         protected Animator movementAnimator;
@@ -14,10 +14,19 @@ namespace DefaultNamespace.Enemies
 
         protected void Start()
         {
+            if (masksAlive == 0)
+            {
+                healthPoints = 20;
+            }
             masksAlive++;
             Debug.Log("Masks alive: "+masksAlive);
             movementAnimator = transform.parent.GetComponent<Animator>();
             BossHealthBar.instance.Init(healthPoints);
+        }
+
+        private void OnDestroy()
+        {
+            masksAlive--;
         }
 
         protected abstract void ThrowDice();
@@ -72,6 +81,7 @@ namespace DefaultNamespace.Enemies
                 
         private IEnumerator FadeAndLoadScene(int sceneIndex)
         {
+            yield return new WaitForSeconds(3f);
             Instantiate(PrefabsManager.instance.FadeOutCanvas);
             yield return new WaitForSeconds(0.5f);
             SceneManager.LoadScene(sceneIndex);

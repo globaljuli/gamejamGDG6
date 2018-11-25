@@ -11,7 +11,9 @@ public class SfxManager : MonoBehaviour
     public AudioClip playerHit;
 
     [Header("Enemies")] 
-    public AudioClip enemyHit;
+    public AudioClip deadCupcake;
+    public AudioClip deadMask;
+    public AudioClip mirror;
     public AudioClip evilLaugh;
 
     [Header("Background")]
