@@ -80,7 +80,6 @@ public class PlayerController : PhysicsObject
             }
         }
 
-        Debug.Log(velocity.y);
         if (velocity.y < 0)
         {
             PlayerAnimator.SetBool("jumpDown", true);
