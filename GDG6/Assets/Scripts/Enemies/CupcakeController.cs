@@ -24,6 +24,8 @@ public class CupcakeController : Enemy
     void Start()
     {
         Player = PlayerController.Instance.transform;
+        jumpForce = Random.Range(2, 12);
+        moveSpeed = Random.Range(2, 5);
     }
 
     // Update is called once per frame
