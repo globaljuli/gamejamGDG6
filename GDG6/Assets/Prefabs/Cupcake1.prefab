@@ -9,48 +9,77 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1642809070748424}
+  m_RootGameObject: {fileID: 1687916187037944}
   m_IsPrefabAsset: 1
---- !u!1 &1642809070748424
+--- !u!1 &1687916187037944
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4012720828164418}
-  - component: {fileID: 212864121788625530}
-  - component: {fileID: 50788695026125676}
-  - component: {fileID: 114423197191286672}
-  - component: {fileID: 95184501364172754}
-  - component: {fileID: 58412183564564508}
+  - component: {fileID: 4306332419431018}
+  - component: {fileID: 212319744097473224}
+  - component: {fileID: 50262386554497528}
+  - component: {fileID: 95264492684024426}
+  - component: {fileID: 58356158739781104}
+  - component: {fileID: 114142218542646300}
   m_Layer: 0
-  m_Name: Cutrcake
+  m_Name: Cupcake1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4012720828164418
+--- !u!1 &1709445835919030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4508490724552698}
+  m_Layer: 0
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4306332419431018
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642809070748424}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.96, y: -2.33, z: -2}
-  m_LocalScale: {x: 0.22903797, y: 0.22903797, z: 0.22903797}
-  m_Children: []
+  m_GameObject: {fileID: 1687916187037944}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.85, y: -2.3, z: -2}
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
+  m_Children:
+  - {fileID: 4508490724552698}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50788695026125676
+--- !u!4 &4508490724552698
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709445835919030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -9.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4306332419431018}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50262386554497528
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642809070748424}
+  m_GameObject: {fileID: 1687916187037944}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,13 +92,13 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &58412183564564508
+  m_Constraints: 4
+--- !u!58 &58356158739781104
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642809070748424}
+  m_GameObject: {fileID: 1687916187037944}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -79,13 +108,13 @@ CircleCollider2D:
   m_Offset: {x: -0.029044772, y: -6.792327}
   serializedVersion: 2
   m_Radius: 1.9579269
---- !u!95 &95184501364172754
+--- !u!95 &95264492684024426
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642809070748424}
+  m_GameObject: {fileID: 1687916187037944}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cd5241f2b09bef547862b70f4c03f91b, type: 2}
@@ -97,12 +126,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114423197191286672
+--- !u!114 &114142218542646300
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642809070748424}
+  m_GameObject: {fileID: 1687916187037944}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2d2ab9d83a3cfb4ab498b7afa2606b9, type: 3}
@@ -110,20 +139,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 1
   attackPoints: 1
-  moveSpeed: 7
-  CupcakeAnimator: {fileID: 0}
+  moveSpeed: 2
+  CupcakeAnimator: {fileID: 95264492684024426}
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
-  groundCheck: {fileID: 0}
-  rbCupcake: {fileID: 0}
-  jumpForce: 2
---- !u!212 &212864121788625530
+    m_Bits: 256
+  groundCheck: {fileID: 4508490724552698}
+  rbCupcake: {fileID: 50262386554497528}
+  jumpForce: 3
+--- !u!212 &212319744097473224
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1642809070748424}
+  m_GameObject: {fileID: 1687916187037944}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -154,7 +183,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b363521390235114ea24f35ce65dd9e8, type: 3}
-  m_Color: {r: 0.15752938, g: 0.3749071, b: 0.5660378, a: 1}
+  m_Color: {r: 0.15686275, g: 0.3764706, b: 0.5647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
