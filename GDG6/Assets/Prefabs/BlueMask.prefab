@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 95330960138133176}
   - component: {fileID: 58803996590141690}
   - component: {fileID: 50666822345007660}
-  - component: {fileID: 114450417928582352}
+  - component: {fileID: 114040835852310876}
   m_Layer: 0
   m_Name: BlueMaskSubanimation
   m_TagString: Enemy
@@ -66,8 +66,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166658257521762}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 11.332167, y: 2.8308244, z: 0}
+  m_LocalScale: {x: 0.5733, y: 0.5733, z: 0.5733}
   m_Children:
   - {fileID: 4048641678393882}
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114450417928582352
+--- !u!114 &114040835852310876
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,10 +134,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754254245504382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21888a76e8174a50b228cb4041f66658, type: 3}
+  m_Script: {fileID: 11500000, guid: 51516ef0336e3b442ace500f6146c22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 1
 --- !u!212 &212735635977547326
 SpriteRenderer:
   m_ObjectHideFlags: 1

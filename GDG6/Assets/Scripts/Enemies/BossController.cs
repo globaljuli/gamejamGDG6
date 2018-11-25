@@ -161,7 +161,7 @@ public class BossController : Enemy {
 
     private void EigthWave()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             Instantiate(EnemiesAray[1]);
         }
