@@ -69,28 +69,27 @@ public class BossController : Enemy {
         else if (waveTimer >= 30 && !sixthWave)
         {
             SixthWave();
-            fifthWave = true;
+            sixthWave = true;
         }
         else if (waveTimer >= 30 && !seventhhWave)
         {
             SeventhWave();
-            fifthWave = true;
+            seventhhWave = true;
         }
         else if (waveTimer >= 30 && !eigthWave)
         {
             EigthWave();
-            fifthWave = true;
+            eigthWave = true;
         }
         else if (waveTimer >= 30 && !ninthWave)
         {
             NinthWave();
-            fifthWave = true;
+            ninthWave = true;
         }
     }
 
     private void FirstWave()
     {
-
         for (int i = 0; i < 3; i++)
         {
             Instantiate(EnemiesAray[0]);

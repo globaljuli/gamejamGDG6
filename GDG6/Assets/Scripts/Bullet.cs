@@ -31,13 +31,12 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
     }
 
     private void MoveX(float displacement)
     {
         Vector3 v3 = transform.position;
-        v3.x += displacement;
+        v3.x += displacement * Time.deltaTime;
         transform.position = v3;
     }
 
@@ -50,7 +49,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collision");
         if (other.gameObject.CompareTag("Player"))
         {
             return;

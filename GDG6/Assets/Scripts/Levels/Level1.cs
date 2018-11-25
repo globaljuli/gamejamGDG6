@@ -41,7 +41,7 @@ public class Level1 : Level
         yield return new WaitForSeconds(1);
         Spawn(cupcake, _topRight);
         yield return new WaitForSeconds(1);
-        if (counter < 4)
+        if (counter < 1)
         {
             StartCoroutine(Spawner2());
         }
@@ -54,17 +54,18 @@ public class Level1 : Level
     
     private IEnumerator Spawner3()
     {
-        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _right + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _left + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _left + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _topLeft + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        Spawn(cupcake, _topRight + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
-        
-        yield return new WaitForSeconds(11f);
+//        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _top + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _right + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _left + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _left + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _topLeft + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        Spawn(cupcake, _topRight + new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)));
+//        
+//        yield return new WaitForSeconds(11f);
         Instantiate(PrefabsManager.instance.MasksBoss);
+        yield return null;
     }
 }

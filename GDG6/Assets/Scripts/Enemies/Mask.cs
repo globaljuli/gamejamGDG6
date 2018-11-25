@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace.Enemies
 {
     public abstract class Mask : Enemy
     {
-        private static int healthPoints = 20;
+        private static int healthPoints = 10;
         private int attackPoints = 1;
         protected bool dead = false;
         protected Animator movementAnimator;
@@ -65,10 +66,16 @@ namespace DefaultNamespace.Enemies
             if (masksAlive == 0)
             {
                 Debug.Log("Load Level 2 omg!");
-                //load level 2
+                StartCoroutine(FadeAndLoadScene(2));
             }
         }
-
+                
+        private IEnumerator FadeAndLoadScene(int sceneIndex)
+        {
+            Instantiate(PrefabsManager.instance.FadeOutCanvas);
+            yield return new WaitForSeconds(0.5f);
+            SceneManager.LoadScene(sceneIndex);
+        }
 
         private void OnCollisionEnter2D(Collision2D other)
         {

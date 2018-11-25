@@ -134,19 +134,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1261310681199676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d2ab9d83a3cfb4ab498b7afa2606b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5598e3a126104b5a8cfaf0fd23f6c73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 1
   attackPoints: 1
-  moveSpeed: 2
+  moveSpeed: 5
   CupcakeAnimator: {fileID: 95075700000211458}
   groundMask:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 4943288558603666}
   rbCupcake: {fileID: 50084279405471318}
-  jumpForce: 3
+  jumpForce: 2
 --- !u!212 &212447345613423052
 SpriteRenderer:
   m_ObjectHideFlags: 1

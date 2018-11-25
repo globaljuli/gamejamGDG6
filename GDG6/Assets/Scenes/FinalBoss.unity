@@ -965,11 +965,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32b149abc2e40869ba9a6209205788a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cupcake: {fileID: 0}
+  Cupcake: {fileID: 1687916187037944, guid: 3372701ec451cb846be92ad1b36b61b2, type: 2}
   MasksBoss: {fileID: 0}
   GameOverCanvas: {fileID: 1441698137063010, guid: 13db263969807fb43a94a20d400a964a,
     type: 2}
-  FadeOutCanvas: {fileID: 0}
+  FadeOutCanvas: {fileID: 1318611714751854, guid: 12baa511458a04849842f9d112350c17,
+    type: 2}
 --- !u!114 &1503141495
 MonoBehaviour:
   m_ObjectHideFlags: 0

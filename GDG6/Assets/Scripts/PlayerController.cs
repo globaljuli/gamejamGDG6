@@ -11,7 +11,7 @@ public class PlayerController : PhysicsObject
     public float jumpTakeOffSpeed;
     public Animator PlayerAnimator;
     private bool facingRight;
-    public int healthPoints;
+    private int healthPoints = 8;
     private SfxManager sfx;
     Coroutine disableShoot;
     public GameObject hurt;
@@ -25,8 +25,6 @@ public class PlayerController : PhysicsObject
         {
             Instance = this;   
             spriteRenderer = GetComponent<SpriteRenderer>();
-            //animator = GetComponent<Animator>();
-            healthPoints = 4;
         }
         else
         {
@@ -113,7 +111,7 @@ public class PlayerController : PhysicsObject
 
     private IEnumerator DisableHurtAnimation()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
         hurt.SetActive(false);
         GetComponent<SpriteRenderer>().enabled = true;
     }

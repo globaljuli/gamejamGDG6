@@ -196,7 +196,8 @@ MonoBehaviour:
   MasksBoss: {fileID: 1878572522801974, guid: 2f6d68fe5a05be544a57ff1428923973, type: 2}
   GameOverCanvas: {fileID: 1441698137063010, guid: 13db263969807fb43a94a20d400a964a,
     type: 2}
-  FadeOutCanvas: {fileID: 0}
+  FadeOutCanvas: {fileID: 1318611714751854, guid: 12baa511458a04849842f9d112350c17,
+    type: 2}
 --- !u!114 &114395014076546748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,6 +245,7 @@ MonoBehaviour:
   playerHit: {fileID: 0}
   enemyHit: {fileID: 0}
   evilLaugh: {fileID: 8300000, guid: 8c8d9ea541de0c640a8b44dac2542000, type: 3}
+  backgroundMusic: {fileID: 0}
 --- !u!114 &114866342223947262
 MonoBehaviour:
   m_ObjectHideFlags: 1
