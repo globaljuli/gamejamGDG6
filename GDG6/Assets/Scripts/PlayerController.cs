@@ -77,6 +77,12 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
+        Debug.Log(velocity.y);
+        if (velocity.y < -3)
+        {
+          
+            PlayerAnimator.SetTrigger("jumpDown");
+        }
 
         spriteRenderer.flipX = facingRight;
         //animator.SetBool("grounded", grounded);
