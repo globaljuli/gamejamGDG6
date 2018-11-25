@@ -13,6 +13,8 @@ public class PlayerController : PhysicsObject
     private bool facingRight;
     public int healthPoints;
     private SfxManager sfx;
+    Coroutine disableShoot;
+    public GameObject hurt;
     
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
@@ -43,7 +45,7 @@ public class PlayerController : PhysicsObject
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
-        if (move.x != 0) {
+        if (move.x > 0.1 || move.x < -0.1) {
             PlayerAnimator.SetBool("run", true);
         } else
         {
@@ -77,11 +79,13 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
+
         Debug.Log(velocity.y);
-        if (velocity.y < -3)
+        if (velocity.y < 0)
         {
-          
-            PlayerAnimator.SetTrigger("jumpDown");
+            PlayerAnimator.SetBool("jumpDown", true);
+        } else {
+            PlayerAnimator.SetBool("jumpDown", false);
         }
 
         spriteRenderer.flipX = facingRight;
@@ -102,8 +106,18 @@ public class PlayerController : PhysicsObject
         {
             Die();
         }
+        hurt.SetActive(true);
+        hurt.GetComponent<SpriteRenderer>().flipX = facingRight;
+        GetComponent<SpriteRenderer>().enabled = false;
+        StartCoroutine(DisableHurtAnimation());
     }
 
+    private IEnumerator DisableHurtAnimation()
+    {
+        yield return new WaitForSeconds(0.2f);
+        hurt.SetActive(false);
+        GetComponent<SpriteRenderer>().enabled = true;
+    }
     private void Die()
     {
         Game.instance.GameOver();
@@ -126,8 +140,21 @@ public class PlayerController : PhysicsObject
 
         Vector2 bulletPosition = transform.position + new Vector3(xDisplacement, 0, 0);
         bullet.GetComponent<Bullet>().Initialize(bulletPosition, facingRight);
+
+        PlayerAnimator.SetBool("shoot", true);
+        if(disableShoot!= null)
+        {
+            StopCoroutine(disableShoot);
+        }
+        disableShoot = StartCoroutine(DisableShootAnimation());
     }
-    
+
+    private IEnumerator DisableShootAnimation( )
+    {
+        yield return new WaitForSeconds(0.3f);
+        PlayerAnimator.SetBool("shoot", false);
+    }
+
     public static PlayerController Instance;
     
     
